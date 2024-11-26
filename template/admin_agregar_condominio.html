@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Agregar fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/f308d8c25e.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/jpeg">
+    <link rel="stylesheet" type="text/css" href="{% static 'estilos.css' %}">
+    <title>Agregar Ed.Comunitaria</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <!-- Hamburger icon to trigger the mobile menu -->
+            <div class="mobile-menu-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+    
+            <a class="navbar-brand logo-container-mobile" href="{% url 'index' %}">
+                <img src="{% static 'img/logo_nombre2.png' %}" alt="rukapewma Logo" class="logo-img">
+            </a>
+    
+            <!-- Regular navigation menu for larger screens -->
+            <ul class="menu">
+                <li><a href="{% url 'perfil' %}">Perfil</a></li>
+                <li><a href="{% url 'admin_agregar_mapa' %}">Agregar Mapa</a></li>
+                <li class="submenu">
+                    <a href="#">Agregar Proyectos</a>
+                    <ul class="submenu-items">
+                        <li><a href="{% url 'admin_agregar_condominio' %}">Condominio social</a></li>
+                        <li><a href="{% url 'admin_agregar_asbesto' %}">Eliminación Asbesto</a></li>
+                        <li><a href="{% url 'admin_agregar_energetico' %}">Eficiencia Energética</a></li>
+                        <li><a href="{% url 'admin_agregar_intSocial' %}">Integración Social</a></li>
+                        <li><a href="{% url 'admin_agregar_comunitaria' %}">Edificación Comunitaria</a></li>
+                        <li><a href="{% url 'admin_agregar_verdes' %}">Áreas Verdes</a></li>
+                        <li><a href="{% url 'admin_agregar_vivienda' %}">Vivienda Patrimonial</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="#">Eliminar Proyectos</a>
+                    <ul class="submenu-items">
+                        <li><a href="{% url 'listar_condominio' %}">Condominio social</a></li>
+                        <li><a href="{% url 'listar_asbesto' %}">Eliminación Asbesto</a></li>
+                        <li><a href="{% url 'listar_energetico' %}">Eficiencia Energética</a></li>
+                        <li><a href="{% url 'listar_social' %}">Integración Social</a></li>
+                        <li><a href="{% url 'listar_comunitaria' %}">Edificación Comunitaria</a></li>
+                        <li><a href="{% url 'listar_verdes' %}">Áreas Verdes</a></li>
+                        <li><a href="{% url 'listar_vivienda' %}">Vivienda Patrimonial</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'cerrar_sesion' %}">Cerrar Sesión</a></li>
+                
+                <li class="login-icon">
+                    <nav class="inicioseccion">
+                        <button id="boton_iniciar_secion"><a href="{% url 'iniciar_sesion' %}"><img src="{%static 'img/icons8-usuario-64.png'%}" alt=""></a></button>
+                    </nav>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h1 id="tituloNotici">Agregar Proyecto: "Condominio Social"</h1>
+
+<br>
+<br>
+<br>
+
+<main>
+    <form id="formulario_noti2" method="post" action="{% url 'publicar_agregar_condominio' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- Campos del formulario -->
+        <div class="form-group2">
+            <label for="imagen_condominio">Subir imagen:</label>
+            <input type="file" id="imagen_condominio" name="imagen_condominio" accept="image/*" required>
+        </div>
+
+        <div class="form-group2">
+            <label for="titulo_condominio">Título:</label>
+            <input type="text" id="titulo_condominio" name="titulo_condominio" placeholder="Escribe un título" required>
+        </div>
+
+        <div class="form-group2">
+            <label for="fecha_condominio">Fecha:</label>
+            <input type="date" id="fecha_condominio" name="fecha_condominio" required>
+        </div>
+
+        <!-- Nuevo campo para elegir un Servicio-->
+        <div class="form-group2">
+            <label for="Servicio">Elegir Servicio:</label>
+            <select id="Servicio" name="servicio" required>
+                <!-- Asegúrate de agregar opciones según tus necesidades -->
+                <option value="Condominio Social">Condominio Social</option>
+            </select>
+        </div>
+
+        <div class="form-group2">
+            <label for="nombre_ciudad">Nombre de Ciudad:</label>
+            <textarea id="nombre_ciudad" name="nombre_ciudad" placeholder="Escribe tu texto aquí" required></textarea>
+        </div>
+
+        <div class="form-group2">
+            <label for="nombre_tipo_servicio">Nombre de tipo de Servicio:</label>
+            <textarea id="nombre_tipo_servicio" name="nombre_tipo_servicio" placeholder="Escribe tu texto aquí" required></textarea>
+        </div>
+
+        <div class="form-group2">
+            <label for="texto_condominio">Texto:</label>
+            <textarea id="texto_condominio" name="texto_condominio" placeholder="Escribe tu texto aquí" required></textarea>
+        </div>
+
+        <!-- Botón para crear noticia -->
+        <button class="Crear-Noticia" type="button" onclick="mostrarVistaPrevia()">Vista Previa</button>
+    </main>
+    <br>
+    <!-- Div donde se mostrará el contenido de la noticia -->
+    <div id="contenedor-de-noticia" class="nuevo-contenedor"></div>
+
+
+        <!-- Fotografias -->
+        <div class="titulo-con-linea">
+            <hr class="linea-titulo">
+            <span id="titulo3">Fotografías</span>
+        </div>
+
+        <!-- Cargar imágenes -->
+        <div class="cargar-imagenes">
+            <!-- Usa un nombre único para cada input de imagen -->
+            <input type="file" id="imagen1" name="imagen1" accept="image/*">
+            <input type="file" id="imagen2" name="imagen2" accept="image/*">
+            <input type="file" id="imagen3" name="imagen3" accept="image/*">
+            <input type="file" id="imagen4" name="imagen4" accept="image/*">
+
+            <button onclick="cargarImagenes()">Cargar Imágenes</button>
+            <button id="botones_noticia" class="Publicar-Noticia" type="submit" onclick="publicarNoticia()">Publicar</button>
+        </div>
+
+        <!-- Contenedor para mostrar imágenes -->
+        <div id="contenedor-imagenes" class="imagen-row"></div>
+
+</form>
+
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="{% static 'js/menu.js' %}"></script>
+<script src="{% static 'js/proyecto_condominio.js' %}"></script>
+</body>
+</html>

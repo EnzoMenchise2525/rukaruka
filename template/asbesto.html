@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Agregar fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/f308d8c25e.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    {% load static %}
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/jpeg">
+    <link rel="stylesheet" type="text/css" href="{% static 'noticias.css' %}">
+    <title>Asbesto</title>
+
+</head>
+<body>
+    <header>
+        <nav class="menu-container">
+            <!-- Hamburger icon to trigger the mobile menu -->
+            <div class="mobile-menu-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+    
+            <a class="navbar-brand logo-container-mobile" href="{% url 'index' %}">
+                <img src="{% static 'img/logo_nombre2.png' %}" alt="rukapewma Logo" class="logo-img">
+            </a>
+            
+            <!-- Regular navigation menu for larger screens -->
+            <ul class="menu">
+                <li><a href="{% url 'index' %}">Inicio</a></li>
+                <li><a href="{% url 'nuestra_mision' %}">Quienes Somos</a></li>
+                <li class="submenu">
+                    <a href="#">Proyectos</a>
+                    <ul class="submenu-items">
+                        <li><a href="{% url 'integracion_social' %}">Integración Social</a></li>
+                        <li class="submenu">
+                            <a href="#">Viviendas</a>
+                            <ul id="submenu-items2" class="submenu-items">
+                                <li><a href="{% url 'condominio_social' %}">Condominio Social</a></li>
+                                <li><a href="{% url 'eficiencia_energetico' %}">Eficiencia Energética</a></li>
+                                <li><a href="{% url 'vivienda_patrimonial' %}">Vivienda Patrimonial</a></li>
+                                <li><a href="{% url 'asbesto' %}">Asbesto</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="submenu">
+                            <a href="#">Barrios</a>
+                            <ul id="submenu-items2" class="submenu-items">
+                                <li><a href="{% url 'areas_verdes' %}">Areas verdes</a></li>
+                                <li><a href="{% url 'comunitaria' %}">Edificacion Comunitaria</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="login-icon">
+                    <nav class="inicioseccion">
+                        <button id="boton_iniciar_secion"><a href="{% url 'iniciar_sesion' %}"><img src="{%static 'img/icons8-usuario-64.png'%}" alt=""></a></button>
+                    </nav>
+                </li>
+            </ul>
+        </nav>
+    </header>
+<br>
+<br>
+<br>
+<br>
+<div id="imagen-panoramica">
+        <img src="{% static 'img/patrimonial(1600x300).jpg'%}" alt="Imagen panorámica">
+        <div class="overlay"></div> <!-- Capa superpuesta para el efecto -->
+        <div class="texto-superpuesto">
+            <h2 class="mensaje-entrada-salida">Eliminar Asbesto</h2>
+        </div>
+    </div>
+
+<br>
+<br>
+<br>
+<br>
+
+<div id="noticias-container">
+    {% if asbesto %}
+        <div id="container2">
+            <br>
+            <div class="row d-flex justify-content-start">
+                {% for asbesto in asbesto %}
+                    <div class="col-md-4 mb-4 {% if forloop.last %}mr-0{% else %}mr-5{% endif %}">
+                        <div class="card noticia-item" style="height: 400px;">
+                            {% if asbesto.imagen_asbesto %}
+                                <img src="{{ asbesto.imagen_asbesto.url }}" alt="{{ asbesto.titulo_asbesto }}" class="card-img-top" style="width: 100%; height: 200px; object-fit: cover;">
+                            {% endif %}
+                            <div class="card-body">
+                                <p class="card-text">{{ asbesto.fecha_asbesto}}</p>
+                                <h4 class="card-text"><strong>{{ asbesto.titulo_asbesto }}</strong></h4>
+                                <p class="card-text">{{ asbesto.texto_asbesto|truncatechars:130 }}</p>
+
+                                {% for imagen in asbesto.imagenes.all %}
+                                    <img src="{{ imagen.imagen.url }}" alt="Imagen adicional">
+                                {% endfor %}
+
+                                <a href="{% url 'detalle_asbesto' asbesto.id %}" class="btn btn-primary btn-sm custom-btn">Leer más</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div id="container2">
+            <h1>No hay noticias disponibles en este momento.</h1>
+        </div>
+    {% endif %}
+</div>
+
+<div id="pagination-container" class="text-center">
+    {% if asbesto.has_previous %}
+        <a href="?page=1" class="page-link custom-btn">&laquo; Principio</a>
+        <a href="?page={{ asbesto.previous_page_number }}" class="page-link custom-btn">Anterior</a>
+    {% endif %}
+
+    {% for i in asbesto.paginator.page_range %}
+        <a href="?page={{ i }}" class="page-link{% if asbesto.number == i %} current{% endif %}">{{ i }}</a>
+    {% endfor %}
+
+    {% if asbesto.has_next %}
+        <a href="?page={{ asbesto.next_page_number }}" class="page-link custom-btn">Siguiente</a>
+        <a href="?page={{ asbesto.paginator.num_pages }}" class="page-link custom-btn">Ultimo&raquo;</a>
+    {% endif %}
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Cargar la primera página de asbesto al cargar la página
+        loadasbesto(1);
+
+        // Función para cargar asbesto basadas en la página
+        function loadasbesto(page) {
+            $.ajax({
+                url: '/ver_asbesto/',  // Ajusta la URL según tu configuración
+                data: { page: page },
+                type: 'GET',
+                success: function (data) {
+                    $('#asbesto-container').html(data.asbesto_html);
+                    $('#pagination-container').html(data.pagination_html);
+                },
+                error: function () {
+                    console.log('Error al cargar asbesto.');
+                },
+            });
+        }
+
+        // Manejar clics en los enlaces de paginación
+        $(document).on('click', '.pagination a', function (event) {
+            event.preventDefault();
+            const page = $(this).attr('href').split('page=')[1];
+            loadasbesto(page);
+        });
+    });
+</script>
+
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+
+
+<footer class="footer">
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-3">
+          <h3>Información de Contacto</h3>
+          <h4>Cel: +56 9 622 800 59</h4>
+          <h4>Tel: +56 32 221 90 74</h4>
+
+          <h4>Correo Electrónico: rukapewma@rukapewma.com</h4>
+
+        </div>
+        <div class="col-md-3">
+            <h3> Dirección </h3>
+            <h4> Bellavista 280, Viña del Mar </h4>
+        </div>
+
+        <div class="col-md-3">
+          <h3> Horario de Atención</h3>
+          <h4> Lunes a Viernes </h4>
+          <h4> 9:00 a.m. - 13:30 p.m. </h4>
+        </div>
+
+        <div class="col-md-3">
+            <h3>¡Síguenos en Redes Sociales!</h3>
+            <div class="redes-sociales">
+        
+                <!-- Icono de WhatsApp -->
+                <a href="https://wa.me/+56962280059" class="boton-redes whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp fa-3x" style="color: #25d366; margin-right: 10px;"></i>
+                </a>
+        
+                <!-- Icono de Instagram -->
+                <a href="https://www.instagram.com/at_rukapewma/" class="boton-redes instagram" target="_blank">
+                    <i class="fab fa-instagram fa-3x" style="color: #c13584; margin-right: 15px;"></i>
+                </a>
+        
+                <!-- Icono de YouTube -->
+                <a href="https://www.youtube.com/@rukapewma9343" class="boton-redes youtube" target="_blank">
+                    <i class="fab fa-youtube fa-3x" style="color: #ff0000;"></i>
+                </a>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+
+</footer>
+
+  <!-- ---------------------------------------------------------------------------------- -->
+<!-- -------------------------------- scripts ----------------------------------------- -->
+<!-- ---------------------------------------------------------------------------------- -->
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="{% static 'js/menu.js' %}"></script>
+
+<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+</body>
+</html>

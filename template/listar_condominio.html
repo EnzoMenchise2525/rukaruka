@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script src="https://kit.fontawesome.com/f308d8c25e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    {% load static %}
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/jpeg">
+    <link rel="stylesheet" type="text/css" href="{% static 'listar.css' %}">
+    <title>Listas Condominio</title>
+
+</head>
+<body>
+    <!-- --------------------------------------Menu----------------------------------- -->
+
+    <header>
+        <nav>
+            <!-- Hamburger icon to trigger the mobile menu -->
+            <div class="mobile-menu-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+    
+            <a class="navbar-brand logo-container-mobile" href="{% url 'index' %}">
+                <img src="{% static 'img/logo_nombre2.png' %}" alt="rukapewma Logo" class="logo-img">
+            </a>
+    
+            <!-- Regular navigation menu for larger screens -->
+            <ul class="menu">
+                <li><a href="{% url 'perfil' %}">Perfil</a></li>
+                <li><a href="{% url 'admin_agregar_mapa' %}">Agregar Mapa</a></li>
+                <li class="submenu">
+                    <a href="#">Agregar Proyectos</a>
+                    <ul class="submenu-items">
+                        <li><a href="{% url 'admin_agregar_condominio' %}">Condominio social</a></li>
+                        <li><a href="{% url 'admin_agregar_asbesto' %}">Eliminación Asbesto</a></li>
+                        <li><a href="{% url 'admin_agregar_energetico' %}">Eficiencia Energética</a></li>
+                        <li><a href="{% url 'admin_agregar_intSocial' %}">Integración Social</a></li>
+                        <li><a href="{% url 'admin_agregar_comunitaria' %}">Edificación Comunitaria</a></li>
+                        <li><a href="{% url 'admin_agregar_verdes' %}">Áreas Verdes</a></li>
+                        <li><a href="{% url 'admin_agregar_vivienda' %}">Vivienda Patrimonial</a></li>
+                    </ul>
+                </li>
+                <li class="submenu">
+                    <a href="#">Eliminar Proyectos</a>
+                    <ul class="submenu-items">
+                        <li><a href="{% url 'listar_condominio' %}">Condominio social</a></li>
+                        <li><a href="{% url 'listar_asbesto' %}">Eliminación Asbesto</a></li>
+                        <li><a href="{% url 'listar_energetico' %}">Eficiencia Energética</a></li>
+                        <li><a href="{% url 'listar_social' %}">Integración Social</a></li>
+                        <li><a href="{% url 'listar_comunitaria' %}">Edificación Comunitaria</a></li>
+                        <li><a href="{% url 'listar_verdes' %}">Áreas Verdes</a></li>
+                        <li><a href="{% url 'listar_vivienda' %}">Vivienda Patrimonial</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'cerrar_sesion' %}">Cerrar Sesión</a></li>
+                
+                <li class="login-icon">
+                    <nav class="inicioseccion">
+                        <button id="boton_iniciar_secion"><a href="{% url 'iniciar_sesion' %}"><img src="{%static 'img/icons8-usuario-64.png'%}" alt=""></a></button>
+                    </nav>
+                </li>
+            </ul>
+        </nav>
+    </header>  
+    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <h1 id="tituloNotici">Lista de "condominio"</h1>
+    <br>
+    
+    <div id="contenedor-gris">
+        <div id="cursor">
+            <table id="table_ubicacion">
+                <thead id="thead_ubicacion">
+                    <tr>
+                        <th class="th_ubicacion">Título</th>
+                        <th class="th_ubicacion" onclick="sortTable(1)">
+                            Fecha
+                            <span id="arrow">&#x25B2;</span>
+                        </th>                        
+                        <th class="th_ubicacion">Ciudad</th>
+                        <th class="th_ubicacion">Tipo de Servicio</th>
+                        <th class="th_ubicacion">Texto</th>
+                        <th class="th_ubicacion">Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody_ubicacion">
+                    {% for condominio in condominio %}
+                    <tr>
+                        <td class="td_ubicacion">{{ condominio.titulo_condominio }}</td>
+                        <td class="td_ubicacion">{{ condominio.fecha_condominio|date:"d/m/Y" }}</td>
+                        <td class="td_ubicacion">{{ condominio.nombre_ciudad }}</td>
+                        <td class="td_ubicacion">{{ condominio.nombre_tipo_servicio }}</td>
+                        <td class="td_ubicacion">{{ condominio.texto_condominio|truncatechars:20}}</td>
+                        <td class="td_ubicacion">
+                            <form method="post" action="{% url 'eliminar_condominio' condominio.id %}" onsubmit="return confirmDelete()">
+                                {% csrf_token %}
+                                <button type="submit" class="eliminar-button">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="{% static 'js/menu.js' %}"></script>
+<script src="{% static 'js/listar_condominio.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script src="https://kit.fontawesome.com/f308d8c25e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+ <!-- Mapa de Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+    {% load static %}
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/jpeg">
+    <link rel="stylesheet" type="text/css" href="{% static 'estilos.css' %}">
+    <title>Agrega Mapa</title>
+</head>
+
+<body>
+<!-- --------------------------------------Menu----------------------------------- -->
+
+<header>
+    <nav>
+        <!-- Hamburger icon to trigger the mobile menu -->
+        <div class="mobile-menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <a class="navbar-brand logo-container-mobile" href="{% url 'index' %}">
+            <img src="{% static 'img/logo_nombre2.png' %}" alt="rukapewma Logo" class="logo-img">
+        </a>
+
+        <!-- Regular navigation menu for larger screens -->
+        <ul class="menu">
+            <li><a href="{% url 'perfil' %}">Perfil</a></li>
+            <li><a href="{% url 'admin_agregar_mapa' %}">Agregar Mapa</a></li>
+            <li class="submenu">
+                <a href="#">Agregar Proyectos</a>
+                <ul class="submenu-items">
+                    <li><a href="{% url 'admin_agregar_condominio' %}">Condominio social</a></li>
+                    <li><a href="{% url 'admin_agregar_asbesto' %}">Eliminación Asbesto</a></li>
+                    <li><a href="{% url 'admin_agregar_energetico' %}">Eficiencia Energética</a></li>
+                    <li><a href="{% url 'admin_agregar_intSocial' %}">Integración Social</a></li>
+                    <li><a href="{% url 'admin_agregar_comunitaria' %}">Edificación Comunitaria</a></li>
+                    <li><a href="{% url 'admin_agregar_verdes' %}">Áreas Verdes</a></li>
+                    <li><a href="{% url 'admin_agregar_vivienda' %}">Vivienda Patrimonial</a></li>
+                </ul>
+            </li>
+            <li class="submenu">
+                <a href="#">Eliminar Proyectos</a>
+                <ul class="submenu-items">
+                    <li><a href="{% url 'listar_condominio' %}">Condominio social</a></li>
+                    <li><a href="{% url 'listar_asbesto' %}">Eliminación Asbesto</a></li>
+                    <li><a href="{% url 'listar_energetico' %}">Eficiencia Energética</a></li>
+                    <li><a href="{% url 'listar_social' %}">Integración Social</a></li>
+                    <li><a href="{% url 'listar_comunitaria' %}">Edificación Comunitaria</a></li>
+                    <li><a href="{% url 'listar_verdes' %}">Áreas Verdes</a></li>
+                    <li><a href="{% url 'listar_vivienda' %}">Vivienda Patrimonial</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'cerrar_sesion' %}">Cerrar Sesión</a></li>
+            
+            <li class="login-icon">
+                <nav class="inicioseccion">
+                    <button id="boton_iniciar_secion"><a href="{% url 'iniciar_sesion' %}"><img src="{%static 'img/icons8-usuario-64.png'%}" alt=""></a></button>
+                </nav>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h1 id="tituloNotici">Agregar Ubicaciones: "Agregar Mapa"</h1>
+
+<br>
+<br>
+<br>
+<!-- ---------------------------------------------------------------------------------- -->
+<div class="contenedor_ubicacion">
+    <h2>Agregar Ubicación</h2>
+
+    <form method="post" action="{% url 'admin_agregar_mapa' %}">
+        {% csrf_token %}
+        
+        <label for="{{ form.nombre_lugar.id_for_label }}">Nombre del Lugar:</label>
+        {{ form.nombre_lugar }}
+        
+        <br>
+        <br>
+        <br>
+
+        <label class="etiqueta-ancho" for="ciudad">Ciudad:</label>
+        <select class="seleccion-ancho" id="ciudad" name="ciudad">
+            <!-- Aquí deberías cargar dinámicamente las opciones de las ciudades -->
+            <option value="Arica y Parinacota">Arica y Parinacota</option> 
+            <option value="Tarapacá">Tarapacá</option>
+            <option value="Antofagasta">Antofagasta</option>
+            <option value="Atacama">Atacama</option>
+            <option value="Coquimbo">Coquimbo</option>
+            <option value="Valparaíso">Valparaíso</option>
+            <option value="Región del Libertador Gral. Bernardo O’Higgins">Región del Libertador Gral. Bernardo O’Higgins</option>
+            <option value="Región del Maule">Región del Maule</option>
+            <option value="Región de Ñuble">Región de Ñuble</option>
+            <option value="Región del Biobío">Región del Biobío</option>
+            <option value="Región de la Araucanía">Región de la Araucanía</option>
+            <option value="Región de Los Ríos">Región de Los Ríos</option>
+            <option value="Región de Los Lagos">Región de Los Lagos</option>
+            <option value="Región Aisén del Gral. Carlos Ibáñez del Campo">Región Aisén del Gral. Carlos Ibáñez del Campo</option>
+            <option value="Región de Magallanes y de la Antártica Chilena">Región de Magallanes y de la Antártica Chilena</option>
+            <option value="Región Metropolitana de Santiago">Región Metropolitana de Santiago</option>
+
+            <!-- Agrega más opciones según tus necesidades -->
+        </select>
+        <br>
+        <br>
+        <label class="etiqueta-ancho" for="comuna">Comuna:</label>
+        <select class="seleccion-ancho" id="comuna" name="comuna">
+            <!-- Las opciones de comuna se cargarán dinámicamente según la selección de la ciudad -->
+        </select>
+        <br>
+        <br>
+
+        <label class="etiqueta-ancho" for="{{ form.latitud.id_for_label }}">Latitud:</label>
+        {{ form.latitud }}
+        <br>
+        <br>
+
+        <label class="etiqueta-ancho" for="{{ form.longitud.id_for_label }}">Longitud:</label>
+        {{ form.longitud }}
+        <br>
+        <br>
+
+        <button type="submit">Guardar Ubicación</button>
+    </form>
+</div>
+
+<!-- ---------------------------------------------------------------------------------- -->
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+<!-- ------------------------------ Googgle Maps ------------------------------------- -->
+<!-- ---------------------------------------------------------------------------------- -->
+<br>
+<br>
+<br>
+
+<div id="map-container">
+    <h1 id="titulo_ubicacion">Lugares de Asistencia Técnica:</h1>
+    <div id="map"></div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Configuración inicial del mapa
+  var mymap = L.map('map').setView([-33.45, -70.65], 8);
+
+  // Añadir capa de mapa de Leaflet (puedes cambiar a otro proveedor si es necesario)
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(mymap);
+
+  // Obtener ubicaciones desde el contexto Django
+  var ubicaciones = {{ ubicaciones_json|safe }};
+
+  // Ordenar las ubicaciones por nombre del lugar, ciudad y comuna
+  ubicaciones.sort(function(a, b) {
+    // Puedes ajustar las propiedades por las cuales quieres ordenar
+    return a.nombre_lugar.localeCompare(b.nombre_lugar) ||
+           a.ciudad.localeCompare(b.ciudad) ||
+           a.comuna.localeCompare(b.comuna);
+  });
+
+  // Agregar marcadores desde las ubicaciones en la base de datos
+  ubicaciones.forEach(function(ubicacion) {
+    var latitud = ubicacion.latitud;
+    var longitud = ubicacion.longitud;
+    var nombreLugar = ubicacion.nombre_lugar;
+
+    L.marker([latitud, longitud]).addTo(mymap).bindPopup(nombreLugar);
+  });
+});
+</script>
+
+
+<br>
+<br>
+<br>
+
+<h1 id="titulo_ubicacion">Listado de Ubicaciones</h1>
+
+<div id="contenedor-gris">
+    <div id="cursor">
+        <table id="table_ubicacion">
+            <thead id="thead_ubicacion">
+                <tr>
+                    <th class="th_ubicacion">Nombre del Lugar</th>
+                    <th class="th_ubicacion" onclick="sortTable(1)">
+                        Ciudad
+                        <span id="arrow"></span>
+                    </th>
+                    <th class="th_ubicacion" onclick="sortTable(2)">
+                        Comuna
+                        <span id="arrow"></span>
+                    </th>                    
+                    <th class="th_ubicacion">Latitud</th>
+                    <th class="th_ubicacion">Longitud</th>
+                    <th class="th_ubicacion">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tbody_ubicacion">
+                {% for ubicacion in ubicaciones %}
+                    <tr>
+                        <td class="td_ubicacion">{{ ubicacion.nombre_lugar }}</td>
+                        <td class="td_ubicacion">{{ ubicacion.ciudad }}</td>
+                        <td class="td_ubicacion">{{ ubicacion.comuna }}</td>
+                        <td class="td_ubicacion">{{ ubicacion.latitud }}</td>
+                        <td class="td_ubicacion">{{ ubicacion.longitud }}</td>
+                        <td class="td_ubicacion">
+                            <form method="post" action="{% url 'eliminar_ubicacion' ubicacion.id %}" onsubmit="return confirmDelete()">
+                                {% csrf_token %}
+                                <button type="submit" class="eliminar-button">Eliminar</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+<footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Información de Contacto</h3>
+          <h4>cel: +569 34345432</h4>
+          <h4>Correo Electrónico: rukapewma@rukapewma.com</h4>
+        </div>
+        <div class="col-md-4">
+          <h3> Nuestro Horario </h3>
+          <h4> Lunes a Viernes </h4>
+        </div>
+        <div class="col-md-4">
+          <h3>Ve Nuestras redes Sociales</h3>
+          <p>Recibe actualizaciones y noticias</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center square-div">
+
+        </div>
+      </div>
+    </div>
+  </footer>
+   
+ 
+  
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   
+    <script src="{% static 'js/menu.js' %}"></script>
+    <script src="{% static 'js/mapa.js' %}"></script>
+</body>
+</html>

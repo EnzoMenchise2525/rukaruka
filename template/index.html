@@ -1,0 +1,480 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Agregar fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/f308d8c25e.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/jpeg">
+    <link rel="stylesheet" type="text/css" href="{% static 'estilos.css' %}">
+
+    <!-- Agregar palabras clave -->
+    <meta name="keywords" content="rukapewma.cl, rukapewma, rukapeuma, rucapewma, rucapeuma, integracion social, vivienda patrimonial, condominio social, eliminar asbesto" />
+    <!-- description -->
+    <meta name="description" content="nos dedicamos a facilitar y acompañar en la adquisición de la vivienda propia, 
+    mejoramiento de viviendas existentes y sus barrios, ofreciendo 
+    soluciones de calidad y accesibles para las familias y su comunidad." />
+
+    <title>Inicio</title>
+
+</head>
+
+<body>
+<!-- --------------------------------------Menu----------------------------------- -->
+<br>
+<br>
+<header>
+    <nav class="menu-container">
+        <!-- Hamburger icon to trigger the mobile menu -->
+        <div class="mobile-menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <a class="navbar-brand logo-container-mobile" href="{% url 'index' %}">
+            <img src="{% static 'img/logo_nombre2.png' %}" alt="rukapewma Logo" class="logo-img">
+        </a>
+        
+        <!-- Regular navigation menu for larger screens -->
+        <ul class="menu">
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'nuestra_mision' %}">Quienes Somos</a></li>
+            <li class="submenu">
+                <a href="#">Proyectos</a>
+                <ul class="submenu-items">
+                    <li><a href="{% url 'integracion_social' %}">Integración Social</a></li>
+                    <li class="submenu">
+                        <a href="#">Viviendas</a>
+                        <ul id="submenu-items2" class="submenu-items">
+                            <li><a href="{% url 'condominio_social' %}">Condominio Social</a></li>
+                            <li><a href="{% url 'eficiencia_energetico' %}">Eficiencia Energética</a></li>
+                            <li><a href="{% url 'vivienda_patrimonial' %}">Vivienda Patrimonial</a></li>
+                            <li><a href="{% url 'asbesto' %}">Asbesto</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="submenu">
+                        <a href="#">Barrios</a>
+                        <ul id="submenu-items2" class="submenu-items">
+                            <li><a href="{% url 'areas_verdes' %}">Areas verdes</a></li>
+                            <li><a href="{% url 'comunitaria' %}">Edificacion Comunitaria</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="login-icon">
+                <nav class="inicioseccion">
+                    <button id="boton_iniciar_secion"><a href="{% url 'iniciar_sesion' %}"><img src="{%static 'img/icons8-usuario-64.png'%}" alt=""></a></button>
+                </nav>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<br>
+<br>
+<!-- -------------------------------------efecto carruzel----------------------------------- -->
+
+<div class="slide">
+    
+    <div class="slide-inner">
+        <input class="slide-open" type="radio" id="slide-1" name="slide" aria-hidden="true" hidden="" checked="checked">
+        <div class="slide-item">
+            <img src="{% static 'img/carrusel(1800x800).jpg' %}" alt="">
+        </div>
+
+        <input class="slide-open" type="radio" id="slide-2" name="slide" aria-hidden="true" hidden="">
+        <div class="slide-item">
+            <img src="{% static 'img/carrusel(2)(1800x800).jpg' %}" alt="">
+        </div>
+
+        <input class="slide-open" type="radio" id="slide-3" name="slide" aria-hidden="true" hidden="">
+        <div class="slide-item">
+            <img src="{% static 'img/trabajo(1800x800).jpg.' %}" alt="">
+        </div>
+
+        <input class="slide-open" type="radio" id="slide-4" name="slide" aria-hidden="true" hidden="">
+        <div class="slide-item">
+            <img src="{% static 'img/remplazo(1800x800).jpg' %}" alt="">
+        </div>
+
+        <input class="slide-open" type="radio" id="slide-5" name="slide" aria-hidden="true" hidden="">
+        <div class="slide-item">
+            <img src="{% static 'img/carrusel(5)(1800x800).jpg' %}" alt="">
+        </div>
+
+        <label for="slide-5" class="slide-control prev control-5">‹</label>
+        <label for="slide-4" class="slide-control prev control-4">‹</label>
+        <label for="slide-3" class="slide-control next control-3">›</label>
+        <label for="slide-2" class="slide-control prev control-2">‹</label>
+        <label for="slide-1" class="slide-control next control-1">›</label>
+
+        <ol class="slide-indicador">
+            <li>
+                <label for="slide-1" class="slide-circulo">•</label>
+            </li>
+            <li>
+                <label for="slide-2" class="slide-circulo">•</label>
+            </li>
+            <li>
+                <label for="slide-3" class="slide-circulo">•</label>
+            </li>
+            <li>
+                <label for="slide-4" class="slide-circulo">•</label>
+            </li>
+            <li>
+                <label for="slide-5" class="slide-circulo">•</label>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const slides = document.querySelectorAll(".slide-open");
+      let currentSlide = 0;
+  
+      function showSlide(index) {
+        slides[index].checked = true;
+      }
+  
+      function nextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide(currentSlide);
+      }
+  
+      function prevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(currentSlide);
+      }
+  
+      setInterval(nextSlide, 3000); // Cambia de imagen cada 3 segundos
+  
+      document.querySelector(".control-1").addEventListener("click", function () {
+        showSlide(0);
+      });
+  
+      document.querySelector(".control-2").addEventListener("click", function () {
+        showSlide(1);
+      });
+  
+      document.querySelector(".control-3").addEventListener("click", function () {
+        showSlide(2);
+      });
+  
+      document.querySelector(".control-4").addEventListener("click", function () {
+        showSlide(3);
+      });
+  
+      document.querySelector(".control-5").addEventListener("click", function () {
+        showSlide(4);
+      });
+  
+      document.querySelector(".prev").addEventListener("click", prevSlide);
+      document.querySelector(".next").addEventListener("click", nextSlide);
+    });
+  </script>
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+
+<br>
+    <h1 id="titulo">Nosotros</h1> 
+
+    <div id="contenido">
+
+        <p id="parrafo"> 
+            
+            Somos una Entidad Patrocinante, que nace en el año 2006 con el objetivo 
+            de contribuir a la adquisición, mejoras de las viviendas y espacios 
+            públicos del país, de la mano de las distintas líneas programáticas 
+            del Ministerio de Vivienda y Urbanismo.
+
+        </p>
+
+        <img id="imagen" src="{% static 'img/index.jpg'%}" alt="Descripción de la imagen">
+
+    </div>
+
+    <br>
+
+    <div>
+        <a href="{% url 'nuestra_mision' %}" class="btn-azul">
+            <button id="boton-leer-mas">Leer más</button>
+        </a>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+    <!-- ---------------------------------------------------------------------------------- -->
+       <!-- Nuestros ervicios -->
+
+       <hr id="linea-titulo"> <!-- Línea divisoria negra debajo del botón -->
+       <br>
+       <h1 id="titulo2">Nuestros servicios</h1> 
+       <br>
+       <hr id="linea-titulo"> <!-- Línea divisoria negra debajo del botón -->
+       <!-- ---------------------------------------------------------------------------------- -->
+
+
+    <div id="noticias-container">
+        <!-- Vivienda -->
+        <div class="row">
+            {% if vivienda %}
+                <div class="col-md-4 mb-4">
+                    <div class="card noticia-item">
+                        {% if vivienda.imagen_vivienda %}
+                            <img src="{{ vivienda.imagen_vivienda.url }}" alt="{{ vivienda.titulo_vivienda }}" class="card-img-top noticias-imagen" style="width: 100%; height: 400px; object-fit: cover;">
+                            <div class="overlay-text">
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <h4 class="card-text"><strong>{{ vivienda.titulo_vivienda }}</strong></h4>
+                                <p class="card-text">{{ vivienda.fecha_vivienda }}</p>
+                                <h5 class="card-text"><strong>{{  vivienda.nombre_tipo_servicio }}</strong></h5>
+                                <p class="card-text">{{ vivienda.texto_vivienda|truncatechars:100 }}</p>
+                                <a href="{% url 'detalle_vivienda' vivienda.id %}" class="btn btn-primary btn-sm custom-btn">Leer más</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <button id="boton_ir_azul" onclick="window.location.href={% url 'vivienda_patrimonial' %}">Ir a Vivienda Patrimonial</button>
+                </div>
+            {% else %}
+                <!-- Código similar para manejar el caso en que no haya noticias de vivienda -->
+            {% endif %}
+    
+            <!-- Social -->
+            {% if social %}
+                <div class="col-md-4 mb-4">
+                    <div class="card noticia-item">
+                        {% if social.imagen_social %}
+                            <img src="{{ social.imagen_social.url }}" alt="{{ social.titulo_social }}" class="card-img-top noticias-imagen" style="width: 100%; height: 400px; object-fit: cover;">
+                            <div class="overlay-text">
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <h4 class="card-text"><strong>{{ social.titulo_social }}</strong></h4>
+                                <p class="card-text">{{ social.fecha_social }}</p>
+                                <h5 class="card-text"><strong>{{  social.nombre_tipo_servicio }}</strong></h5>
+                                <p class="card-text">{{ social.texto_social|truncatechars:100 }}</p>
+                                <a href="{% url 'detalle_social' social.id %}" class="btn btn-primary btn-sm custom-btn">Leer más</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <button id="boton_ir_azul" onclick="window.location.href='{% url 'integracion_social' %}'">Ir a Integración Social</button>
+                </div>
+            {% else %}
+                <!-- Código similar para manejar el caso en que no haya noticias sociales -->
+            {% endif %}
+    
+            <!-- Reconstrucción -->
+            {% if comunitaria %}
+                <div class="col-md-4 mb-4">
+                    <div class="card noticia-item">
+                        {% if comunitaria.imagen_comunitaria %}
+                            <img src="{{ comunitaria.imagen_comunitaria.url }}" alt="{{ comunitaria.titulo_comunitaria }}" class="card-img-top noticias-imagen" style="width: 100%; height: 400px; object-fit: cover;">
+                            <div class="overlay-text">
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <h4 class="card-text"><strong>{{ comunitaria.titulo_comunitaria}}</strong></h4>
+                                <p class="card-text">{{ comunitaria.fecha_comunitaria }}</p>
+                                <h5 class="card-text"><strong>{{  comunitaria.nombre_tipo_servicio }}</strong></h5>
+                                <p class="card-text">{{ comunitaria.texto_comunitaria|truncatechars:100 }}</p>
+                                <a href="{% url 'detalle_comunitaria' comunitaria.id %}" class="btn btn-primary btn-sm custom-btn">Leer más</a>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <button id="boton_ir_azul" onclick="window.location.href='{% url 'comunitaria' %}'">Ir a Ed.Comunitaria</button>
+                </div>
+            {% else %}
+                <!-- Código similar para manejar el caso en que no haya noticias de reconstrucción -->
+            {% endif %}
+        </div>
+    </div>
+    
+<br>
+<br>
+    <!-- ---------------------------------------------------------------------------------- -->
+
+
+
+        
+<h1 id="titulo-form">¿Tienes Preguntas?</h1>
+
+<!-- Formulario -->
+
+<form action="{% url 'index' %}" class="formulario" id="formulario" method="POST" enctype="multipart/form-data">
+    
+    {% csrf_token %}
+
+    <div id="background-container">
+
+        <div id="container">
+
+            <!-- Grupo: Nombre -->
+            <div class="formulario__grupo" id="grupo__nombre">
+                <label for="nombre" class="formulario__label">Nombre completo:</label>
+                <div class="formulario__grupo-input">
+                    <input type="text" class="formulario__input" name="nombre" id="nombre" placeholder="Eje: Alberto Dias">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">Solo se permite letras sin guion y sin números.</p>
+            </div>
+
+            <!-- Grupo: Correo Electrónico -->
+            <div class="formulario__grupo" id="grupo__correo">
+                <label for="correo" class="formulario__label">Correo Electrónico</label>
+                <div class="formulario__grupo-input">
+                    <input type="email" class="formulario__input" name="correo" id="correo" placeholder="correo@correo.com">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El correo solo puede contener letras, números, puntos, guiones y guion bajo.</p>
+            </div>
+
+            <!-- Grupo: Teléfono -->
+            <div class="formulario__grupo" id="grupo__telefono">
+                <label for="telefono" class="formulario__label">Teléfono</label>
+                <div class="formulario__grupo-input">
+                    <input type="text" class="formulario__input" name="telefono" id="telefono" placeholder="4491234567">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">El teléfono debe contener entre 7 y 14 dígitos.</p>
+            </div>
+
+            <!-- Grupo: Asunto -->
+            <div class="formulario__grupo" id="grupo__asunto">
+                <label for="asunto" class="formulario__label">Asunto</label>
+                <div class="formulario__grupo-input">
+                    <input type="text" class="formulario__input" name="asunto" id="asunto">
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">Debes escribir un Asunto.</p>
+            </div>
+
+            <!-- Grupo: Comentario -->
+            <div class="formulario__grupo" id="grupo__mensaje">
+                <label for="mensaje" class="formulario__label">Comentario</label>
+                <div class="formulario__grupo-input">
+                    <textarea name="mensaje" id="mensaje" cols="40" rows="5" class="form-control"></textarea>
+                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                </div>
+                <p class="formulario__input-error">Por favor, ingrese un comentario.</p>
+            </div>
+
+            <!-- Grupo: Archivo -->
+            <div class="formulario__grupo" id="grupo__archivo">
+                <div class="formulario__grupo-input">
+                    <input type="file" name="archivo" id="archivo">
+                </div>
+            </div>
+
+            <!-- Grupo: mensaje btn error -->
+            <div class="formulario__mensaje" id="formulario__mensaje">
+                <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Por favor rellena el formulario correctamente. </p>
+            </div>
+
+            <br>
+            
+            <!-- Grupo: Boton de Enviar -->
+            <div class="formulario__grupo formulario__grupo-btn-enviar">
+                <button type="submit" class="formulario__btn2">Enviar</button>
+                <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
+            </div>
+        
+        </div>
+    </div>
+</form>
+
+
+<footer class="footer">
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-3">
+          <h3>Información de Contacto</h3>
+          <h4>Cel: +56 9 622 800 59</h4>
+          <h4>Tel: +56 32 221 90 74</h4>
+
+          <h4>Correo Electrónico: rukapewma@rukapewma.com</h4>
+
+        </div>
+        <div class="col-md-3">
+            <h3> Dirección </h3>
+            <h4> Bellavista 280, Viña del Mar </h4>
+        </div>
+
+        <div class="col-md-3">
+          <h3> Horario de Atención</h3>
+          <h4> Lunes a Viernes </h4>
+          <h4> 9:00 a.m. - 13:30 p.m. </h4>
+        </div>
+
+        <div class="col-md-3">
+            <h3>¡Síguenos en Redes Sociales!</h3>
+            <div class="redes-sociales">
+        
+                <!-- Icono de WhatsApp -->
+                <a href="https://wa.me/+56962280059" class="boton-redes whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp fa-3x" style="color: #25d366; margin-right: 10px;"></i>
+                </a>
+        
+                <!-- Icono de Instagram -->
+                <a href="https://www.instagram.com/at_rukapewma/" class="boton-redes instagram" target="_blank">
+                    <i class="fab fa-instagram fa-3x" style="color: #c13584; margin-right: 15px;"></i>
+                </a>
+        
+                <!-- Icono de YouTube -->
+                <a href="https://www.youtube.com/@rukapewma9343" class="boton-redes youtube" target="_blank">
+                    <i class="fab fa-youtube fa-3x" style="color: #ff0000;"></i>
+                </a>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+
+</footer>
+
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+<!-- -------------------------------- scripts ----------------------------------------- -->
+<!-- ---------------------------------------------------------------------------------- -->
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<script src="{% static 'js/menu.js' %}"></script>
+<script src="{% static 'js/carrusel.js' %}"></script>
+
+<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></scrip>
+    
+</body>
+</html>

@@ -1,0 +1,494 @@
+.noticia-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px; /* Ajustado para dispositivos móviles */
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-left: 5px; /* Ajustado para dispositivos móviles */
+    margin-right: 5px; /* Ajustado para dispositivos móviles */
+}
+
+.noticia-item img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.card-body {
+    flex-grow: 1;
+}
+
+.card-text {
+    word-wrap: break-word;
+    text-align: justify; /* Añadido para dispositivos móviles */
+}
+
+.custom-btn {
+    background-color: #0073e6;
+    color: white;
+    align-self: flex-end;
+    margin-top: auto;
+}
+
+.container2 {
+    padding: 10px; /* Ajustado para dispositivos móviles */
+    text-align: center;
+    box-sizing: border-box;
+    margin-left: 10px; /* Ajustado para dispositivos móviles */
+    margin-right: 10px; /* Ajustado para dispositivos móviles */
+}
+
+/* Media Query para dispositivos con un ancho máximo de 767px (típicamente teléfonos) */
+@media only screen and (max-width: 767px) {
+    .noticia-item {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .container2 {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+
+
+/* ----------------------------------------------------------- */
+/* -------------------menu---------------- */
+/* ----------------------------------------------------------- */
+
+header {
+    background-color: #a8b1d1;
+    color: #ffffff;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: top 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agrega una sombra para separar el encabezado de los contenidos de la página */
+}
+
+.mobile-menu-icon {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 4;
+}
+
+.mobile-menu-icon .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 4px 0;
+}
+
+/* Estilos para el logo */
+.logo-img {
+    height: 90px;
+    margin-left: 20px; /* Ajusta el margen izquierdo según tus necesidades */
+}
+
+nav ul.menu {
+    list-style-type: none;
+    padding: 0;
+    text-align: right;
+    position: relative;
+    z-index: 3;
+    margin-right: 40px; /* Ajusta el margen derecho según tus necesidades */
+}
+
+
+nav ul.menu li {
+    display: inline-block;
+    margin-right: 20px; /* Ajusta el margen derecho según tus necesidades */
+    position: relative;
+}
+
+nav ul.menu a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 25px;
+    transition: color 0.3s ease;
+    display: block;
+    text-align: center;
+}
+
+nav ul.menu a:hover {
+    color: #ff9900;
+}
+
+/* Estilos para el submenu */
+nav ul.menu .submenu {
+    position: relative;
+    cursor: pointer; /* Agrega un cursor para indicar que es interactivo */
+}
+
+nav ul.menu .submenu-items {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #a8b1d1;
+    color: #ffffff;
+    padding: 16px;
+    text-align: center;
+    z-index: 5; /* Ajusta el z-index para que esté al frente del menú */
+}
+
+nav ul.menu .submenu:hover .submenu-items,
+nav ul.menu .submenu.active .submenu-items {
+    display: block;
+}
+
+nav ul.menu .submenu-items li {
+    margin-bottom: 20px;
+}
+
+/* Estilos para el botón de Iniciar Sesión */
+nav ul.menu .inicioseccion button {
+    background-color: aqua;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+nav ul.menu .inicioseccion i {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+
+.logo-img {
+    height: 90px;
+    margin-right: 40px;
+    margin-top: -15px; /* Ajusta el margen superior según tus necesidades */
+    margin-bottom: 15px; /* Ajusta el margen inferior según tus necesidades */
+}
+
+
+/* Estilo del ícono de inicio de sesión */
+.login-icon {
+    background-color: #a8b1d1; /* Color de fondo deseado */
+    padding: 10px; /* Añade espacio interno para mejorar la apariencia */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Estilo del botón de inicio de sesión */
+#boton_iniciar_secion {
+    background-color: transparent; /* Establece el fondo del botón como transparente para que se vea el fondo del elemento li */
+    border: none; /* Elimina el borde del botón */
+    cursor: pointer;
+    text-decoration: none; /* Elimina la subrayado predeterminado del enlace */
+}
+
+/* Estilo del botón cuando se coloca sobre él (opcional) */
+#boton_iniciar_secion:hover {
+    background-color: #87a0c5; /* Cambia el color al pasar el ratón por encima del botón */
+}
+
+/* Estilo de la imagen dentro del botón */
+#boton_iniciar_secion img {
+    max-width: 100%; /* Asegura que la imagen no sobresalga del contenedor del botón */
+}
+
+
+/* ... Código anterior ... */
+
+@media (max-width: 768px) {
+
+    .menu-container {
+        flex-direction: column; /* Alinear elementos en columna en lugar de fila */
+        align-items: flex-start; /* Alinear elementos al principio */
+    }
+
+    .menu {
+        width: 100%; /* Ocupar todo el ancho disponible */
+    }
+
+    .mobile-menu-icon {
+        display: block; /* Asegurar que el ícono de menú esté visible en pantallas pequeñas */
+    }
+
+    .mobile-menu-icon {
+        display: block;
+    }
+
+    /* Remove display: none; to keep the regular menu visible */
+    nav ul.menu {
+        display: none; 
+    }
+
+    /* Add styles for the expanded mobile menu */
+    nav ul.menu.mobile-expanded {
+        display: flex;
+        flex-direction: column; /* Alinea los elementos en columna en lugar de fila */
+        background-color: #a8b1d1;
+        position: absolute;
+        top: 110px; /* Ajusta la posición vertical del menú expandido */
+        left: 0;
+        width: 100%;
+        text-align: center;
+        z-index: 4; /* Ajusta el z-index para que esté al frente */
+        border-bottom: 2px solid #ffffff;
+    }
+
+    /* Styles for mobile menu items */
+    nav ul.menu.mobile-expanded li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    /* Styles for placing the logo to the right in mobile menu */
+    nav ul.menu.mobile-expanded .logo-container-mobile {
+        justify-content: flex-end;
+        text-align: right;
+    }
+
+    /* Styles for submenu items */
+    nav ul.menu.mobile-expanded .submenu-items {
+        z-index: 5; /* Ajusta el z-index para que esté al frente del menú */
+    }
+
+    /* Adjust the width of the header for smaller screens */
+    header {
+        padding: 25px 0; /* Reduce vertical padding */
+        width: 100%; /* Set header width to 100% */
+    }
+
+    .logo-container-mobile {
+        display: flex;
+        justify-content: flex-end;
+        align-items: right; /* Alinea el logo hacia abajo */
+        text-align: right;
+        margin-bottom: 10px; /* Ajusta el margen inferior del logo */
+    }
+}
+
+/* ----------------------------------------------------------- */
+/* ------------------- footer -------------------------------- */
+/* ----------------------------------------------------------- */
+
+/* Estilos para el footer */
+.footer {
+    background-color: #343a40; /* Fondo oscuro */
+    color: #fff; /* Texto en blanco */
+    padding: 50px 0; /* Espaciado interno */
+    margin-top: 20px;
+  }
+  
+  .footer h3 {
+    font-size: 24px;
+    margin-top: 0;
+    color: #ffcc29; /* Color de título */
+  }
+  
+  .footer p {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  
+  /* Estilo para los enlaces en el footer */
+  .footer a {
+    color: #f8b400;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .footer a:hover {
+    color: #ffcc29;
+  }
+  
+  /* Estilo para la lista de enlaces en el footer */
+  .footer ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer ul li {
+    margin-bottom: 10px;
+  }
+  
+  /* Estilos para el formulario de suscripción */
+  .footer form {
+    margin-top: 20px;
+  }
+  
+  .footer .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .footer input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #f8b400;
+    border-radius: 5px;
+  }
+  
+  .footer .btn-primary {
+    background-color: #f8b400;
+    border: none;
+    border-radius: 5px;
+    color: #343a40;
+    padding: 10px 20px;
+    font-size: 18px;
+  }
+  
+  .footer .btn-primary:hover {
+    background-color: #ffcc29;
+  }
+
+
+
+/* ----------------------------------------------------------- */
+/* ------------------ imagen panoramica 1800x300 --------------*/ 
+/* ----------------------------------------------------------- */
+
+#imagen-panoramica {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    max-height: 100vh;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.texto-superpuesto {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(0, -50%);
+    text-align: left;
+    padding-left: 16px; /* Adjusted padding */
+    margin-left: 16px; /* Adjusted margin */
+}
+
+.mensaje-entrada-salida {
+    color: #fff;
+    font-size: 4vw; /* Adjusted font size using vw unit */
+    opacity: 0;
+    animation: entradaSalida 3s ease-in-out infinite; /* Adjusted duration */
+}
+
+@keyframes entradaSalida {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+#imagen-panoramica img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7; 
+}
+
+@media (max-width: 768px) {
+    #imagen-panoramica {
+        position: relative;
+        width: 100%;
+        max-height: 30vh; /* Ajusta el valor de max-height según sea necesario */
+        overflow: hidden;
+    }
+
+    #imagen-panoramica img {
+        width: 100%;
+        height: auto; /* Permite que la imagen se escale proporcionalmente */
+        object-fit: cover;
+        opacity: 0.7; /* Ajusta el valor de opacidad según sea necesario (0.0 a 1.0) */
+        margin-top: 20px; /* Ajusta el valor de margin-top según sea necesario */
+    }
+}
+
+/* ----------------------------------------------------------- */
+/* ------------------ paginacion --------------*/ 
+/* ----------------------------------------------------------- */
+
+/* Estilos para la paginación */
+#pagination-container {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    width: 100%; /* Establecer el ancho al 100% */
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #333;
+    padding: 8px 12px;
+    margin: 0 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.pagination a:hover {
+    background-color: #eee;
+}
+
+.pagination .current {
+    font-weight: bold;
+    padding: 8px 12px;
+    margin: 0 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+}
+
+.page-link {
+    padding: 8px 12px;
+    margin: 0 4px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #333;
+}
+
+.page-link:hover {
+    background-color: #eee;
+}
+
+/* Estilos específicos para los botones personalizados */
+.custom-btn {
+    background-color: #f6a700;
+    color: #fff;
+    border: 1px solid #f6a700;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin: 0 4px;
+    text-decoration: none;
+}
+
+.custom-btn:hover {
+    background-color: #d88c00; /* Color diferente al pasar el mouse */
+}
+
+

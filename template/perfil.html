@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Agregar fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/f308d8c25e.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/jpeg">
+    <link rel="stylesheet" type="text/css" href="{% static 'perfil.css' %}">
+    <title>Perfil</title>
+</head>
+
+<body>
+
+   <!-- --------------------------------------Menu----------------------------------- -->
+<header>
+    <nav>
+        <!-- Hamburger icon to trigger the mobile menu -->
+        <div class="mobile-menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <a class="navbar-brand logo-container-mobile" href="{% url 'index' %}">
+            <img src="{% static 'img/logo_nombre2.png' %}" alt="rukapewma Logo" class="logo-img">
+        </a>
+
+        <!-- Regular navigation menu for larger screens -->
+        <ul class="menu">
+            <li><a href="{% url 'perfil' %}">Perfil</a></li>
+            <li><a href="{% url 'admin_agregar_mapa' %}">Agregar Mapa</a></li>
+            <li class="submenu">
+                <a href="#">Agregar Proyectos</a>
+                <ul class="submenu-items">
+                    <li><a href="{% url 'admin_agregar_condominio' %}">Condominio social</a></li>
+                    <li><a href="{% url 'admin_agregar_asbesto' %}">Eliminación Asbesto</a></li>
+                    <li><a href="{% url 'admin_agregar_energetico' %}">Eficiencia Energética</a></li>
+                    <li><a href="{% url 'admin_agregar_intSocial' %}">Integración Social</a></li>
+                    <li><a href="{% url 'admin_agregar_comunitaria' %}">Edificación Comunitaria</a></li>
+                    <li><a href="{% url 'admin_agregar_verdes' %}">Áreas Verdes</a></li>
+                    <li><a href="{% url 'admin_agregar_vivienda' %}">Vivienda Patrimonial</a></li>
+                </ul>
+            </li>
+            <li class="submenu">
+                <a href="#">Eliminar Proyectos</a>
+                <ul class="submenu-items">
+                    <li><a href="{% url 'listar_condominio' %}">Condominio social</a></li>
+                    <li><a href="{% url 'listar_asbesto' %}">Eliminación Asbesto</a></li>
+                    <li><a href="{% url 'listar_energetico' %}">Eficiencia Energética</a></li>
+                    <li><a href="{% url 'listar_social' %}">Integración Social</a></li>
+                    <li><a href="{% url 'listar_comunitaria' %}">Edificación Comunitaria</a></li>
+                    <li><a href="{% url 'listar_verdes' %}">Áreas Verdes</a></li>
+                    <li><a href="{% url 'listar_vivienda' %}">Vivienda Patrimonial</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'cerrar_sesion' %}">Cerrar Sesión</a></li>
+            
+            <li class="login-icon">
+                <nav class="inicioseccion">
+                    <button id="boton_iniciar_secion"><a href="{% url 'iniciar_sesion' %}"><img src="{%static 'img/icons8-usuario-64.png'%}" alt=""></a></button>
+                </nav>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    <form method="POST" action="{% url 'editar_perfil' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <section class="seccion-perfil-usuario">
+    
+            <div class="perfil-usuario-header">
+                <div class="perfil-usuario-portada">
+                    <div class="perfil-usuario-avatar">
+                        
+                        <label for="foto_de_perfil" class="input-label">
+                            <input type="file" id="foto_de_perfil" name="foto_de_perfil" accept="image/*" onchange="mostrarImagenDePerfil(event)">
+                            <div class="icon-container">
+                                <i class="far fa-image"></i>
+                            </div>
+                        </label>
+                        {% if usuario.foto_de_perfil %}
+                            <img id="imagenDePerfil" src="{{ usuario.foto_de_perfil.url }}">
+                        {% else %}
+                            <img id="imagenDePerfil" src="#">
+                        {% endif %}
+                    </div>
+                    <div class="perfil-usuario-header" id="contenedor_imagen">
+                        {% if usuario.imagen_de_fondo %}
+                            <img id="imagenDeFondo" src="{{ usuario.imagen_de_fondo.url }}">
+                        {% else %}
+                            <img id="imagenDeFondo" src="#">
+                        {% endif %}
+                        <input type="file" id="imagen_de_fondo_input" name="imagen_de_fondo" accept="image/*">
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+    
+            <div class="perfil-usuario-body">
+                <div class="perfil-usuario-bio">
+                    <h3 class="titulo">{{ usuario.first_name }} {{ usuario.last_name }}</h3>
+                    <p class="texto">Usted es un Usuario ADMINISTRADOR, eso quiere decir que es capaz de modificar el contenido de la página.</p>
+                </div>
+    
+                <div class="perfil-usuario-footer">
+                    <ul class="lista-datos">
+                        <li><i class="icono fas fa-user"></i> <p class="texto">Nombre de Usuario:</p></li>
+                        <p class="texto2">{{ usuario.username }}</p>
+                        <li><i class="icono fas fa-envelope"></i> <p class="texto">Correo Electrónico:</p></li>
+                        <p class="texto2"> {{ usuario.email }}</p>
+                        <li><i class="icono fas fa-building"></i> <p class="texto">Cargo:</p></li>
+                        <p class="texto2"> {{ usuario.cargo }}</p>
+                    </ul>
+    
+                    <br>
+                    <ul class="lista-datos">
+                        <li><i class="icono fas fa-phone-alt"></i> <p class="texto">Teléfono:</p></li>
+                        <p class="texto2"> {{ usuario.telefono }}</p>
+                        <li><i class="icono fas fa-calendar-alt"></i> <p class="texto">Fecha de Nacimiento:</p></li>
+                        <p class="texto2"> {{ usuario.fecha_de_nacimiento }}</p>
+                        <li><i class="icono fas fa-map-marker-alt"></i> <p class "texto">Dirección:</p></li>
+                        <p class="texto2"> {{ usuario.direccion }}</p>
+                    </ul>
+                </div>
+    
+                <div class="redes-sociales">
+                    <!-- Icono de WhatsApp -->
+                    <a href="https://wa.me/+56962280059" class="boton-redes whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    
+                    <!-- Icono de Instagram -->
+                    <a href="https://www.instagram.com/at_rukapewma/" class="boton-redes instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    
+                    <!-- Icono de YouTube -->
+                    <a href="https://www.youtube.com/@rukapewma9343" class="boton-redes youtube" target="_blank">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+                
+    
+                <br>
+                <div class="perfil-usuario-footer2">
+                    <ul class="lista-datos2">
+                        <h2 id="miH2">Editar perfil</h2>
+    
+                        <section id="formularioEditarPerfil">
+                            {% csrf_token %}
+
+                            <label for="username">Nombre de usuario:</label>
+                            <input type="text" id="username" name="username" value="{{ usuario.username }}"><br><br>
+                            <label for="first_name">Nombre:</label>
+                            <input type="text" id="first_name" name="first_name" value="{{ usuario.first_name }}"><br><br>
+                            <label for="last_name">Apellido:</label>
+                            <input type="text" id="last_name" name="last_name" value="{{ usuario.last_name }}"><br><br>
+                            <label for="email">Correo electrónico:</label>
+                            <input type="text" id="email" name="email" value="{{ usuario.email }}"><br><br>
+                            <label for="cargo">Cargo:</label>
+                            <input type="text" id="cargo" name="cargo" value="{{ usuario.cargo }}"><br><br>
+                            <label for="telefono">Teléfono:</label>
+                            <input type="text" id="telefono" name="telefono" value="{{ usuario.telefono }}"><br><br>
+                            <label for="fecha_de_nacimiento">Fecha de nacimiento:</label>
+                            <input type="date" id="fecha_de_nacimiento" name="fecha_de_nacimiento" value="{{ usuario.fecha_nacimiento }}"><br><br>
+                            <label for="direccion">Dirección:</label>
+                            <input type="text" id="direccion" name="direccion" value="{{ usuario.direccion }}"><br><br>
+                            {{ form.as_p }}
+                            <button type="submit" id="guardarCambiosBtn">Guardar cambios</button>
+                        </section>
+                    </ul>
+                </div>
+    
+            </div>
+    
+        </section>
+    </form>
+    
+
+    </form>
+    <br>
+
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script src="{% static 'js/menu.js' %}"></script>
+    
+</body>
+
+</html>

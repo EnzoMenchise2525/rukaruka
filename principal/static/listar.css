@@ -1,0 +1,333 @@
+/* ----------------------------------------------------------- */
+/* -------------------menu---------------- */
+/* ----------------------------------------------------------- */
+
+header {
+    background-color: #a8b1d1;
+    color: #ffffff;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: top 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Agrega una sombra para separar el encabezado de los contenidos de la página */
+}
+
+.mobile-menu-icon {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 4;
+}
+
+.mobile-menu-icon .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 4px 0;
+}
+
+/* Estilos para el logo */
+.logo-img {
+    height: 90px;
+    margin-left: 20px; /* Ajusta el margen izquierdo según tus necesidades */
+}
+
+nav ul.menu {
+    list-style-type: none;
+    padding: 0;
+    text-align: right;
+    position: relative;
+    z-index: 3;
+    margin-right: 40px; /* Ajusta el margen derecho según tus necesidades */
+}
+
+
+nav ul.menu li {
+    display: inline-block;
+    margin-right: 20px; /* Ajusta el margen derecho según tus necesidades */
+    position: relative;
+}
+
+nav ul.menu a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 25px;
+    transition: color 0.3s ease;
+    display: block;
+    text-align: center;
+}
+
+nav ul.menu a:hover {
+    color: #ff9900;
+}
+
+/* Estilos para el submenu */
+nav ul.menu .submenu {
+    position: relative;
+    cursor: pointer; /* Agrega un cursor para indicar que es interactivo */
+}
+
+nav ul.menu .submenu-items {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #a8b1d1;
+    color: #ffffff;
+    padding: 16px;
+    text-align: center;
+    z-index: 5; /* Ajusta el z-index para que esté al frente del menú */
+}
+
+nav ul.menu .submenu:hover .submenu-items,
+nav ul.menu .submenu.active .submenu-items {
+    display: block;
+}
+
+nav ul.menu .submenu-items li {
+    margin-bottom: 20px;
+}
+
+/* Estilos para el botón de Iniciar Sesión */
+nav ul.menu .inicioseccion button {
+    background-color: aqua;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+nav ul.menu .inicioseccion i {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+
+.logo-img {
+    height: 90px;
+    margin-right: 40px;
+    margin-top: -15px; /* Ajusta el margen superior según tus necesidades */
+    margin-bottom: 15px; /* Ajusta el margen inferior según tus necesidades */
+}
+
+
+/* Estilo del ícono de inicio de sesión */
+.login-icon {
+    background-color: #a8b1d1; /* Color de fondo deseado */
+    padding: 10px; /* Añade espacio interno para mejorar la apariencia */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Estilo del botón de inicio de sesión */
+#boton_iniciar_secion {
+    background-color: transparent; /* Establece el fondo del botón como transparente para que se vea el fondo del elemento li */
+    border: none; /* Elimina el borde del botón */
+    cursor: pointer;
+    text-decoration: none; /* Elimina la subrayado predeterminado del enlace */
+}
+
+/* Estilo del botón cuando se coloca sobre él (opcional) */
+#boton_iniciar_secion:hover {
+    background-color: #87a0c5; /* Cambia el color al pasar el ratón por encima del botón */
+}
+
+/* Estilo de la imagen dentro del botón */
+#boton_iniciar_secion img {
+    max-width: 100%; /* Asegura que la imagen no sobresalga del contenedor del botón */
+}
+
+
+/* ... Código anterior ... */
+
+@media (max-width: 768px) {
+
+    .menu-container {
+        flex-direction: column; /* Alinear elementos en columna en lugar de fila */
+        align-items: flex-start; /* Alinear elementos al principio */
+    }
+
+    .menu {
+        width: 100%; /* Ocupar todo el ancho disponible */
+    }
+
+    .mobile-menu-icon {
+        display: block; /* Asegurar que el ícono de menú esté visible en pantallas pequeñas */
+    }
+
+    .mobile-menu-icon {
+        display: block;
+    }
+
+    /* Remove display: none; to keep the regular menu visible */
+    nav ul.menu {
+        display: none; 
+    }
+
+    /* Add styles for the expanded mobile menu */
+    nav ul.menu.mobile-expanded {
+        display: flex;
+        flex-direction: column; /* Alinea los elementos en columna en lugar de fila */
+        background-color: #a8b1d1;
+        position: absolute;
+        top: 110px; /* Ajusta la posición vertical del menú expandido */
+        left: 0;
+        width: 100%;
+        text-align: center;
+        z-index: 4; /* Ajusta el z-index para que esté al frente */
+        border-bottom: 2px solid #ffffff;
+    }
+
+    /* Styles for mobile menu items */
+    nav ul.menu.mobile-expanded li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    /* Styles for placing the logo to the right in mobile menu */
+    nav ul.menu.mobile-expanded .logo-container-mobile {
+        justify-content: flex-end;
+        text-align: right;
+    }
+
+    /* Styles for submenu items */
+    nav ul.menu.mobile-expanded .submenu-items {
+        z-index: 5; /* Ajusta el z-index para que esté al frente del menú */
+    }
+
+    /* Adjust the width of the header for smaller screens */
+    header {
+        padding: 25px 0; /* Reduce vertical padding */
+        width: 100%; /* Set header width to 100% */
+    }
+
+    .logo-container-mobile {
+        display: flex;
+        justify-content: flex-end;
+        align-items: right; /* Alinea el logo hacia abajo */
+        text-align: right;
+        margin-bottom: 10px; /* Ajusta el margen inferior del logo */
+    }
+}
+
+
+/* ----------------------------------------------------------- */
+/* ------------------- listar-noticias -------------------- */
+/* ----------------------------------------------------------- */
+
+#titulo_ubicacion {
+    color: black;
+    text-align: center;
+    padding: 10px 0; 
+}
+
+#contenedor-principal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+#contenedor-gris {
+    background-color: #f3eaea;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    margin: 20px auto; /* Centrar vertical y horizontalmente */
+    overflow-x: auto; 
+}
+
+#cursor {
+    max-height: 550px;
+    overflow-y: auto;
+    cursor: grab;
+}
+
+#table_ubicacion {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#thead_ubicacion {
+    background-color: #3498db;
+    color: white;
+}
+
+.th_ubicacion {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+    cursor: pointer;
+}
+
+#tbody_ubicacion tr:hover {
+    background-color: #f5f5f5;
+}
+
+.eliminar-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto; /* Centra los botones horizontalmente */
+}
+
+#cursor th {
+    padding: 8px;
+    border: 1px solid black;
+    text-align: left;
+}
+
+#cursor table {
+    width: 100%;
+}
+
+#cursor .eliminar-button {
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto; /* Centra los botones horizontalmente */
+}
+
+.td_ubicacion {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+    color: black;
+}
+
+
+
+
+
+
+/* Estilo para el título */
+
+#tituloNotici {
+    text-align: center; /* Centrar el texto */
+    color: #070808; /* Cambiar el color del texto */
+    font-size: 60px; /* Cambiar el tamaño del texto según tus preferencias */
+    font-weight: bold; /* Hacer el texto en negrita */
+    margin-bottom: 10px; /* Agregar espacio en la parte inferior del título */
+}
+
+#tituloNotici::after {
+    content: "";
+    display: block;
+    border-bottom: 10px solid #0073e6; /* Línea debajo del título */
+    margin-top: 5px; /* Espacio entre el texto y la línea */
+}

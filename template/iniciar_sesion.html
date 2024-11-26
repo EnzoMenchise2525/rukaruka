@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script src="https://kit.fontawesome.com/f308d8c25e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    {% load static %}
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/jpeg">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>Iniciar Sesión</title>
+
+</head>
+<body>
+<!-- --------------------------------------Menu----------------------------------- -->
+
+<header>
+    <nav class="menu-container">
+        <!-- Hamburger icon to trigger the mobile menu -->
+        <div class="mobile-menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <a class="navbar-brand logo-container-mobile" href="{% url 'index' %}">
+            <img src="{% static 'img/logo_nombre2.png' %}" alt="rukapewma Logo" class="logo-img">
+        </a>
+        
+        <!-- Regular navigation menu for larger screens -->
+        <ul class="menu">
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'nuestra_mision' %}">Quienes Somos</a></li>
+            <li class="submenu">
+                <a href="#">Proyectos</a>
+                <ul class="submenu-items">
+                    <li><a href="{% url 'integracion_social' %}">Integración Social</a></li>
+                    <li class="submenu">
+                        <a href="#">Viviendas</a>
+                        <ul id="submenu-items2" class="submenu-items">
+                            <li><a href="{% url 'condominio_social' %}">Condominio Social</a></li>
+                            <li><a href="{% url 'eficiencia_energetico' %}">Eficiencia Energética</a></li>
+                            <li><a href="{% url 'vivienda_patrimonial' %}">Vivienda Patrimonial</a></li>
+                            <li><a href="{% url 'asbesto' %}">Asbesto</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="submenu">
+                        <a href="#">Barrios</a>
+                        <ul id="submenu-items2" class="submenu-items">
+                            <li><a href="{% url 'areas_verdes' %}">Areas verdes</a></li>
+                            <li><a href="{% url 'comunitaria' %}">Edificacion Comunitaria</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="login-icon">
+                <nav class="inicioseccion">
+                    <button id="boton_iniciar_secion"><a href="{% url 'iniciar_sesion' %}"><img src="{%static 'img/icons8-usuario-64.png'%}" alt=""></a></button>
+                </nav>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<body>
+
+    <div class="form-information">
+        
+        <div class="form-information-childs">
+        <div> {% if messages %}
+            <div class="error-message">
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}</div>
+
+            <form method="post" class="formularios" id="formulario" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="container">
+                    <div class="row">
+                        <div class="contenedor-blanco">
+                            <div class="col-md-6 col-sm-12 order-md-2">
+                                <img src="{% static 'img/señalando_seción.jpg' %}" alt="Tu Imagen">
+                            </div>
+                            <div class="col-md-6 col-sm-12 order-md-1">
+                                <h1 class="titulo-acceso">Acceso</h1>
+            
+                                <!-- Campo de Nombre de Usuario -->
+                                <div class="formulario__grupo" id="grupo__nombre">
+                                    <label for="nombre" class="formulario__label">UserName*:</label>
+                                    <input type="text" class="formulario__input" name="username" id="nombre" placeholder="Ej: AlDias" required>
+                                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    <p class="formulario__input-error">Solo se permiten letras sin guiones y sin números.</p>
+                                </div>
+            
+                                <!-- Campo de Contraseña -->
+                                <div class="formulario__grupo" id="grupo__password">
+                                    <label for="password" class="formulario__label">Password*:</label>
+                                    <input type="password" class="formulario__input" name="password" id="password" required>
+                                    <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                                    <p class="formulario__input-error">La contraseña debe tener entre 4 y 35 dígitos.</p>
+                                </div>
+            
+                                <!-- Mensaje de Error -->
+                                <div class="formulario__mensaje" id="formulario__mensaje">
+                                    <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Usuario o contraseña incorrectos. </p>
+                                </div>
+                                <br>
+                                <!-- Botón de Enviar -->
+                                <div class="formulario__grupo formulario__grupo-btn-enviar">
+                                    <button type="submit" class="formulario__btn">Entrar</button>
+                                    <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Iniciando sesión</p>
+                                </div>
+            
+                                <br>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        
+    </div>
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    
+<script src="{% static 'js/menu.js' %}"></script>
+<script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></scrip>
+    
+
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script src="https://kit.fontawesome.com/f308d8c25e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    {% load static %}
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/jpeg">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <title>Recuperar Contraseña</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <!-- Hamburger icon to trigger the mobile menu -->
+            <div class="mobile-menu-icon">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+
+            <a class="navbar-brand logo-container-mobile" href="{% url 'index' %}">
+                <img src="{% static 'img/logo_nombre2.png' %}" alt="rukapewma Logo" class="logo-img">
+            </a>
+            
+            <!-- Regular navigation menu for larger screens -->
+            <ul class="menu">
+                <li><a href="{% url 'index' %}">Inicio</a></li>
+                <li><a href="{% url 'nuestra_mision' %}">Quienes Somos</a></li>
+                <li class="submenu">
+                    <a href="#">Proyectos</a>
+                    <ul class="submenu-items">
+                        <li><a href="{% url 'viviendas' %}">Viviendas</a></li>
+                        <li><a href="{% url 'barrios' %}">Barrios</a></li>
+                        <li><a href="{% url 'habitabilidad_rural' %}">Habitabilidad Rural</a></li>
+                        <li><a href="{% url 'integracion_social' %}">Integración Social</a></li>
+                        <li><a href="{% url 'acondicionamiento_termico' %}">Acondicionamiento Térmico</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'ultimas_noticias' %}">Últimas Noticias</a></li>
+                <li class="login-icon">
+                    <nav class="inicioseccion">
+                        <button class="btn btn-outline-success"><a href="{% url 'iniciar_sesion' %}"><img src="{%static 'img/icons8-usuario-64.png'%}" alt=""></a></button>
+                    </nav>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="contenedor-blanco">
+                <div class="col-md-6 col-sm-12 order-md-1">
+                    <h1 class="titulo-acceso">Recuperar contraseña</h1>
+                    <br>
+                    <p>En caso de pérdida u olvido de su "Contraseña" y/o "Nombre de Usuario", 
+                        deberá ingresar su correo asociado a la empresa, para que, por este 
+                        mismo medio, se le envíe su cuenta por Gmail.</p>
+
+                    <!-- Formulario -->
+
+                    <form method="post" class="formularios" id="formulario">
+                        {% csrf_token %}
+
+                        <div class="formulario__grupo" id="grupo__correo">
+                            <label for="correo" class="formulario__label">Correo Electrónico*</label>
+                            <div class="formulario__grupo-input">
+                                {{ form.correo }}
+                                <input type="email" class="formulario__input" name="correo" id="correo" placeholder="correo@correo.com">
+                                <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                            </div>
+                            <p class="formulario__input-error">El correo solo puede contener letras, números, puntos, guiones y guion bajo.</p>
+                        </div>
+
+                        <br>
+                    
+                        <!-- Mensaje de error del botón -->
+                        <div class="formulario__mensaje" id="formulario__mensaje">
+                            <p><i class="fas fa-exclamation-triangle"></i> <b>Error:</b> Usuario o contraseña incorrectos. </p>
+                        </div>
+                        <br>
+                    
+                        <!-- Botón de Volver -->
+                        <div class="formulario__grupo formulario__grupo-btn-enviar formulario__grupo-btn-izquierda">
+                            <a href="{% url 'iniciar_sesion' %}" class="formulario__btn">Volver</a>
+                        </div>
+                    
+                        <!-- Botón de Enviar -->
+                        <div class="formulario__grupo formulario__grupo-btn-enviar formulario__grupo-btn-derecha">
+                            <button type="submit" class="formulario__btn">Enviar</button>
+                            <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">correo enviado</p>
+                            <i class="formulario__validacion-estado fas fa-times-circle"></i>
+                        </div>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/menu.js' %}"></script>
+    
+   
+    
+</body>
+</html>

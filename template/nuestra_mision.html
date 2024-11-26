@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Agregar fuentes de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/f308d8c25e.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+
+    <!-- Mapa de Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+    {% load static %}
+    <link rel="icon" href="{% static 'img/logo.png' %}" type="image/jpeg">
+    <link rel="stylesheet" type="text/css" href="{% static 'estilos.css' %}">
+    <title>Nosotros</title>
+</head>
+
+<body>
+<!-- --------------------------------------Menu----------------------------------- -->
+
+<header>
+    <nav class="menu-container">
+        <!-- Hamburger icon to trigger the mobile menu -->
+        <div class="mobile-menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <a class="navbar-brand logo-container-mobile" href="{% url 'index' %}">
+            <img src="{% static 'img/logo_nombre2.png' %}" alt="rukapewma Logo" class="logo-img">
+        </a>
+        
+        <!-- Regular navigation menu for larger screens -->
+        <ul class="menu">
+            <li><a href="{% url 'index' %}">Inicio</a></li>
+            <li><a href="{% url 'nuestra_mision' %}">Quienes Somos</a></li>
+            <li class="submenu">
+                <a href="#">Proyectos</a>
+                <ul class="submenu-items">
+                    <li><a href="{% url 'integracion_social' %}">Integración Social</a></li>
+                    <li class="submenu">
+                        <a href="#">Viviendas</a>
+                        <ul id="submenu-items2" class="submenu-items">
+                            <li><a href="{% url 'condominio_social' %}">Condominio Social</a></li>
+                            <li><a href="{% url 'eficiencia_energetico' %}">Eficiencia Energética</a></li>
+                            <li><a href="{% url 'vivienda_patrimonial' %}">Vivienda Patrimonial</a></li>
+                            <li><a href="{% url 'asbesto' %}">Asbesto</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="submenu">
+                        <a href="#">Barrios</a>
+                        <ul id="submenu-items2" class="submenu-items">
+                            <li><a href="{% url 'areas_verdes' %}">Areas verdes</a></li>
+                            <li><a href="{% url 'comunitaria' %}">Edificacion Comunitaria</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="login-icon">
+                <nav class="inicioseccion">
+                    <button id="boton_iniciar_secion"><a href="{% url 'iniciar_sesion' %}"><img src="{%static 'img/icons8-usuario-64.png'%}" alt=""></a></button>
+                </nav>
+            </li>
+        </ul>
+    </nav>
+</header>
+<br>
+<br>
+<br>
+<br>
+
+
+    <div id="imagen-panoramica">
+        <img src="{% static 'img/quienes_somos(1600x300).jpg'%}" alt="Imagen panorámica">
+        <div class="overlay"></div> <!-- Capa superpuesta para el efecto -->
+        <div class="texto-superpuesto">
+            <h2 class="mensaje-entrada-salida">Quiénes Somos</h2>
+        </div>
+    </div>
+
+<!-- ---------------------------------------------------------------------------------- -->
+    <br>
+    <h1 id="titulo">Nuestra Misión es:</h1> 
+
+    <div id="contenido">
+
+    <p id="parrafo"> 
+            
+        Somos una Entidad Patrocinante, que nace en el año 2006 con el objetivo 
+        de contribuir a la adquisición, mejoras de las viviendas y espacios 
+        públicos del país, de la mano de las distintas líneas programáticas 
+        del Ministerio de Vivienda y Urbanismo. Para ello, contamos con un 
+        amplio equipo técnico, encargado de diseñar, crear y supervisar los 
+        proyectos levantados por las comunidades y sus municipios, en compañía 
+        del equipo social y jurídico, quienes asesoran a las familias e 
+        instituciones en el proceso de postulación y ejecución de las obras. 
+
+    </p>
+
+    <img id="imagen" src="{% static 'img/somos.JPG'%}" alt="Descripción de la imagen">
+    
+    </div>
+
+    
+<div id="contenido2">
+    
+    <div id="contenido-derecho">
+        <div class="columna" id="columna-vision">
+            <div class="seccion">
+                <h3>Misión</h3>
+                <p>
+                    En Rukapewma, nos dedicamos a facilitar y acompañar en la adquisición de la 
+                    vivienda propia, mejoramiento de viviendas existentes y sus barrios, ofreciendo 
+                    soluciones de calidad y accesibles para las familias y su comunidad.
+                    Nuestra misión se basa en la creencia de que todos merecen tener un 
+                    entorno y hogar digno y de calidad para sus familias, y trabajamos 
+                    incansablemente para hacer realidad ese sueño, guiados por la integridad, 
+                    la transparencia y el compromiso con la excelencia en cada proyecto 
+                    que emprendemos.
+
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="contenido-izquierdo">
+        <div class="columna" id="columna-mision">
+            <div class="seccion">
+                <h3>Visión</h3>
+                <p>
+                    Ser líderes en dar solución al déficit cuantitativo y cualitativo 
+                    de los hogares de nuestro país, y a recuperar espacios públicos en abandono 
+                    o deterioro, ofreciendo propuestas que cumplan con necesidades básicas de 
+                    mejoramiento, sino que también promuevan un estilo de vida seguro, 
+                    sostenible y comunitario. 
+
+                </p>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<!-- ---------------------------------------------------------------------------------- -->
+<!-- ------------------------------ Video ------------------------------------- -->
+<!-- ---------------------------------------------------------------------------------- -->
+<div class="video-container">
+    <iframe src="https://www.youtube.com/embed/FrTi1Q2p5DY" frameborder="0" allowfullscreen></iframe>
+</div>
+<!-- ---------------------------------------------------------------------------------- -->
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+<!-- ------------------------------ Googgle Maps ------------------------------------- -->
+<!-- ---------------------------------------------------------------------------------- -->
+
+<div id="map-container">
+    <h1 id="titulo_ubicacion2">Proyectos Ejecutados:</h1>
+    <div id="map"></div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Configuración inicial del mapa
+        var mymap = L.map('map').setView([-33.046962969644696, -71.61225017958425], 10);
+        
+
+        // Añadir capa de mapa de Leaflet (puedes cambiar a otro proveedor si es necesario)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(mymap);
+
+        // Obtener ubicaciones desde el contexto Django
+        var ubicaciones = {{ ubicaciones_json|safe }};
+
+        // Ordenar las ubicaciones por nombre del lugar, ciudad y comuna
+        ubicaciones.sort(function(a, b) {
+            // Puedes ajustar las propiedades por las cuales quieres ordenar
+            return a.nombre_lugar.localeCompare(b.nombre_lugar) ||
+                a.ciudad.localeCompare(b.ciudad) ||
+                a.comuna.localeCompare(b.comuna);
+        });
+
+        // Agregar marcadores desde las ubicaciones en la base de datos
+        ubicaciones.forEach(function(ubicacion) {
+            var latitud = ubicacion.latitud;
+            var longitud = ubicacion.longitud;
+            var nombreLugar = ubicacion.nombre_lugar;
+
+            L.marker([latitud, longitud]).addTo(mymap).bindPopup(nombreLugar);
+        });
+    });
+</script>
+
+<br>
+<br>
+
+
+<!-- ---------------------------------------------------------------------------------- -->
+
+
+<footer class="footer">
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-3">
+          <h3>Información de Contacto</h3>
+          <h4>Cel: +56 9 622 800 59</h4>
+          <h4>Tel: +56 32 221 90 74</h4>
+
+          <h4>Correo Electrónico: rukapewma@rukapewma.com</h4>
+
+        </div>
+        <div class="col-md-3">
+            <h3> Dirección </h3>
+            <h4> Bellavista 280, Viña del Mar </h4>
+        </div>
+
+        <div class="col-md-3">
+          <h3> Horario de Atención</h3>
+          <h4> Lunes a Viernes </h4>
+          <h4> 9:00 a.m. - 13:30 p.m. </h4>
+        </div>
+
+        <div class="col-md-3">
+            <h3>¡Síguenos en Redes Sociales!</h3>
+            <div class="redes-sociales">
+        
+                <!-- Icono de WhatsApp -->
+                <a href="https://wa.me/+56962280059" class="boton-redes whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp fa-3x" style="color: #25d366; margin-right: 10px;"></i>
+                </a>
+        
+                <!-- Icono de Instagram -->
+                <a href="https://www.instagram.com/at_rukapewma/" class="boton-redes instagram" target="_blank">
+                    <i class="fab fa-instagram fa-3x" style="color: #c13584; margin-right: 15px;"></i>
+                </a>
+        
+                <!-- Icono de YouTube -->
+                <a href="https://www.youtube.com/@rukapewma9343" class="boton-redes youtube" target="_blank">
+                    <i class="fab fa-youtube fa-3x" style="color: #ff0000;"></i>
+                </a>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+
+</footer>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  
+  <script src="{% static 'js/menu.js' %}"></script>
+  <script src="{% static 'js/mapa.js' %}"></script>
+  
+  <script src="https://kit.fontawesome.com/2c36e9b7b1.js" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

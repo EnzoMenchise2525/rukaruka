@@ -1,0 +1,722 @@
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    line-height: 1.4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+/* Estilos para el contenedor de icono en la esquina inferior */
+.icon-container {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: #71777d;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
+.icon-container i {
+    font-size: 18px;
+}
+
+/* Agregado para la visualización de imágenes de fondo y de perfil */
+.perfil-usuario-avatar img,
+.perfil-usuario-fondo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#imagen_de_fondo {
+    display: none;
+}
+
+.perfil-usuario-fondo label {
+    position: relative;
+}
+
+.perfil-usuario-fondo img {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.perfil-usuario-fondo label:hover img {
+    display: block;
+}
+
+.perfil-usuario-fondo .icon-container {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: #6a6f75;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
+.perfil-usuario-fondo .icon-container i {
+    font-size: 18px;
+}
+
+
+/* Estilos para la imagen de fondo */
+.perfil-usuario-fondo {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Ajusta la altura según tus necesidades */
+    background-color: #f2f2f2; /* Color de fondo temporal mientras se carga la imagen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#imagenDeFondo {
+    display: none;
+}
+
+.perfil-usuario-fondo label {
+    position: relative;
+}
+
+.perfil-usuario-fondo img {
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.perfil-usuario-fondo label:hover img {
+    display: block;
+}
+
+.perfil-usuario-fondo .icon-container {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    background-color: #777a7d;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
+.perfil-usuario-fondo .icon-container i {
+    font-size: 18px;
+}
+
+/* Estilos para la imagen de fondo */
+#imagenDeFondo {
+    position: relative;
+    width: 100%;
+    height: 300px; /* Ajusta la altura según tus necesidades */
+    background-color: #f2f2f2; /* Color de fondo temporal mientras se carga la imagen */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+body {
+    color: #404040;
+    font-family: "Arial", Segoe UI, Tahoma, sans-serifl, Helvetica Neue, Helvetica;
+}
+
+
+.perfil-usuario-header, #contenedor_imagen {
+    display: block;
+    width: 100%;
+    height: 300px; /* Ajusta la altura según tus necesidades */
+    background-color: #0073e6; /* Ajusta el color de fondo según tus necesidades */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 0 0 20px 20px;
+    position: relative;
+}
+
+#contenedor_imagen input[type="file"] {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    border: 0;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    padding: 12px 25px;
+    cursor: pointer;
+}
+
+#contenedor_imagen {
+    background-image: none;
+    position: relative;
+}
+
+
+.seccion-perfil-usuario .perfil-usuario-body,
+.seccion-perfil-usuario {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seccion-perfil-usuario .perfil-usuario-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(#B873FF, transparent);
+    margin-bottom: 1.25rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada {
+    display: block;
+    position: relative;
+    width: 90%;
+    height: 17rem;
+    background-image: linear-gradient(45deg, #BC3CFF, #317FFF);
+    background-size: cover; /* Agregado para ajustar el tamaño de la imagen de fondo */
+    border-radius: 0 0 20px 20px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada .boton-portada {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    border: 0;
+    border-radius: 8px;
+    padding: 12px 25px;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    cursor: pointer;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada .boton-portada i {
+    margin-right: 1rem;
+}
+
+
+.seccion-perfil-usuario .perfil-usuario-avatar {
+    display: flex;
+    width: 180px;
+    height: 180px;
+    align-items: center;
+    justify-content: center;
+    border: 7px solid #FFFFFF;
+    background-color: #DFE5F2;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    position: absolute;
+    bottom: -150px; /* Ajuste de la posición vertical */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    overflow: hidden;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar:hover img {
+    transform: translateY(5%) scale(1.1);
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar:hover::before {
+    opacity: 1;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar .boton-avatar {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 0;
+    background-color: #0073e6;
+    color: #fff;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar .boton-avatar input[type="file"] {
+    display: none;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Agregado para ajustar el tamaño de la imagen de perfil */
+    border-radius: 50%;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body {
+    width: 70%;
+    position: relative;
+    max-width: 750px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body .titulo {
+    display: block;
+    width: 100%;
+    font-size: 1.75em;
+    margin-bottom: 0.5rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body .texto {
+    color: #848484;
+    font-size: 0.95em;
+}
+
+.seccion-perfil-usuario .perfil-usuario-footer,
+.seccion-perfil-usuario .perfil-usuario-bio {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    background-color: #fff;
+    border-radius: 15px;
+    width: 100%;
+}
+
+.seccion-perfil-usuario .perfil-usuario-bio {
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+
+.seccion-perfil-usuario .lista-datos {
+    width: 50%;
+    list-style: none;
+}
+
+.seccion-perfil-usuario .lista-datos li {
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+}
+
+.seccion-perfil-usuario .lista-datos li>.icono {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.seccion-perfil-usuario .redes-sociales {
+    position: absolute;
+    right: calc(0px - 50px - 1rem);
+    top: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.seccion-perfil-usuario .redes-sociales .boton-redes {
+    border: 0;
+    background-color: #fff;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    color: #fff;
+    box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+    font-size: 2.7rem;
+}
+
+.seccion-perfil-usuario .redes-sociales .boton-redes+.boton-redes {
+    margin-top: .5rem;
+}
+
+.seccion-perfil-usuario .boton-redes.whatsapp {
+    background-color: #25D366; /* Cambiar color según tu preferencia para WhatsApp */
+}
+
+.seccion-perfil-usuario .boton-redes.youtube {
+    background-color: #FF0000; /* Cambiar color según tu preferencia para YouTube */
+}
+
+.seccion-perfil-usuario .perfil-usuario-footer .texto:not([data-user]) {
+    color: black;
+}
+
+.seccion-perfil-usuario .boton-redes.instagram {
+    background: linear-gradient(45deg, #FF2DFD, #40A7FF);
+}
+
+@media (max-width: 750px) {
+    .seccion-perfil-usuario .lista-datos {
+        width: 100%;
+    }
+
+    .seccion-perfil-usuario .perfil-usuario-portada,
+    .seccion-perfil-usuario .perfil-usuario-body {
+        width: 95%;
+    }
+
+    .seccion-perfil-usuario .redes-sociales {
+        position: relative;
+        flex-direction: row;
+        width: 100%;
+        left: 0;
+        text-align: center;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .seccion-perfil-usuario .redes-sociales .boton-redes+.boton-redes {
+        margin-left: 1rem;
+        margin-top: 0;
+    }
+}
+
+.texto2 {
+    background-color: #35E1BF;
+    color: #2b4843;
+    padding: 5px;
+    border-radius: 10px;
+    margin-right: 20px;
+    padding-left: 15px;
+}
+
+#miH2 {
+    margin-bottom: 10px;
+    font-size: 25px;
+    color: #333;
+}
+
+.perfil-usuario-footer2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    width: 100%;
+    color: #2b4843;
+    padding: 10px 25px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+#formularioEditarPerfil {
+    max-width: 800px;
+    margin: 5px auto 0;
+    color: #333;
+    text-align: left;
+    font-size: 20px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+#formularioEditarPerfil button {
+    background-color: #2554d3;
+    border: 2px solid #2554d3;
+    border-radius: 5px;
+    color: white;
+    padding: 15px 32px;
+    text-align: right;
+    text-decoration: none;
+    display: block;
+    margin: 0 auto;
+    font-size: 16px;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+#formularioEditarPerfil button:hover {
+    background-color: #1d241e;
+}
+
+@media (max-width: 768px) {
+    #formularioEditarPerfil {
+        width: 100%;
+        font-size: 24px;
+        padding: 5%;
+    }
+}
+
+
+
+.perfil-usuario-avatar {
+    /* ... Otros estilos ... */
+    z-index: 1; /* Ajusta el valor del z-index según sea necesario */
+}
+
+.mobile-menu-icon {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 3; /* Ajusta el valor del z-index según sea necesario */
+}
+
+/* ----------------------------------------------------------- */
+/* -------------------menu---------------- */
+/* ----------------------------------------------------------- */
+
+header {
+    background-color: #a8b1d1;
+    color: #ffffff;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2; /* Ajusta el valor del z-index según sea necesario */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: top 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu-icon {
+    display: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 4;
+}
+
+.mobile-menu-icon .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 4px 0;
+}
+
+/* Estilos para el logo */
+.logo-img {
+    height: 90px;
+    margin-left: 20px; /* Ajusta el margen izquierdo según tus necesidades */
+}
+
+nav ul.menu {
+    list-style-type: none;
+    padding: 0;
+    text-align: right;
+    position: relative;
+    z-index: 3;
+    margin-right: 40px; /* Ajusta el margen derecho según tus necesidades */
+}
+
+
+nav ul.menu li {
+    display: inline-block;
+    margin-right: 20px; /* Ajusta el margen derecho según tus necesidades */
+    position: relative;
+}
+
+nav ul.menu a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 25px;
+    transition: color 0.3s ease;
+    display: block;
+    text-align: center;
+}
+
+nav ul.menu a:hover {
+    color: #ff9900;
+}
+
+/* Estilos para el submenu */
+nav ul.menu .submenu {
+    position: relative;
+    cursor: pointer; /* Agrega un cursor para indicar que es interactivo */
+}
+
+nav ul.menu .submenu-items {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #a8b1d1;
+    color: #ffffff;
+    padding: 16px;
+    text-align: center;
+    z-index: 5; /* Ajusta el z-index para que esté al frente del menú */
+}
+
+nav ul.menu .submenu:hover .submenu-items,
+nav ul.menu .submenu.active .submenu-items {
+    display: block;
+}
+
+nav ul.menu .submenu-items li {
+    margin-bottom: 20px;
+}
+
+/* Estilos para el botón de Iniciar Sesión */
+nav ul.menu .inicioseccion button {
+    background-color: aqua;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+nav ul.menu .inicioseccion i {
+    font-size: 20px;
+    margin-right: 5px;
+}
+
+
+.logo-img {
+    height: 90px;
+    margin-right: 40px;
+    margin-top: -15px; /* Ajusta el margen superior según tus necesidades */
+    margin-bottom: 15px; /* Ajusta el margen inferior según tus necesidades */
+}
+
+
+/* Estilo del ícono de inicio de sesión */
+.login-icon {
+    background-color: #a8b1d1; /* Color de fondo deseado */
+    padding: 10px; /* Añade espacio interno para mejorar la apariencia */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+/* Estilo del botón de inicio de sesión */
+#boton_iniciar_secion {
+    background-color: transparent; /* Establece el fondo del botón como transparente para que se vea el fondo del elemento li */
+    border: none; /* Elimina el borde del botón */
+    cursor: pointer;
+    text-decoration: none; /* Elimina la subrayado predeterminado del enlace */
+}
+
+/* Estilo del botón cuando se coloca sobre él (opcional) */
+#boton_iniciar_secion:hover {
+    background-color: #87a0c5; /* Cambia el color al pasar el ratón por encima del botón */
+}
+
+/* Estilo de la imagen dentro del botón */
+#boton_iniciar_secion img {
+    max-width: 100%; /* Asegura que la imagen no sobresalga del contenedor del botón */
+}
+
+
+/* ... Código anterior ... */
+
+@media (max-width: 768px) {
+
+    .menu-container {
+        flex-direction: column; /* Alinear elementos en columna en lugar de fila */
+        align-items: flex-start; /* Alinear elementos al principio */
+    }
+
+    .menu {
+        width: 100%; /* Ocupar todo el ancho disponible */
+    }
+
+    .mobile-menu-icon {
+        display: block; /* Asegurar que el ícono de menú esté visible en pantallas pequeñas */
+    }
+
+    .mobile-menu-icon {
+        display: block;
+    }
+
+    /* Remove display: none; to keep the regular menu visible */
+    nav ul.menu {
+        display: none; 
+    }
+
+    /* Add styles for the expanded mobile menu */
+    nav ul.menu.mobile-expanded {
+        display: flex;
+        flex-direction: column; /* Alinea los elementos en columna en lugar de fila */
+        background-color: #a8b1d1;
+        position: absolute;
+        top: 110px; /* Ajusta la posición vertical del menú expandido */
+        left: 0;
+        width: 100%;
+        text-align: center;
+        z-index: 4; /* Ajusta el z-index para que esté al frente */
+        border-bottom: 2px solid #ffffff;
+    }
+
+    /* Styles for mobile menu items */
+    nav ul.menu.mobile-expanded li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    /* Styles for placing the logo to the right in mobile menu */
+    nav ul.menu.mobile-expanded .logo-container-mobile {
+        justify-content: flex-end;
+        text-align: right;
+    }
+
+    /* Styles for submenu items */
+    nav ul.menu.mobile-expanded .submenu-items {
+        z-index: 5; /* Ajusta el z-index para que esté al frente del menú */
+    }
+
+    /* Adjust the width of the header for smaller screens */
+    header {
+        padding: 25px 0; /* Reduce vertical padding */
+        width: 100%; /* Set header width to 100% */
+    }
+
+    .logo-container-mobile {
+        display: flex;
+        justify-content: flex-end;
+        align-items: right; /* Alinea el logo hacia abajo */
+        text-align: right;
+        margin-bottom: 10px; /* Ajusta el margen inferior del logo */
+    }
+}
+
+
